@@ -16,13 +16,11 @@ public class algoritmosProva {
 		int meio = (int) (ini + fim) / 2;
 		if (S[meio] == meio) {
 			return "Existe!!!";
-		} else if (S[meio] < 0) {
+		} else if (S[meio] < meio) {
 			return pesquisa(S, meio + 1, fim);
-		} else if (meio > S[meio]) {
+		} else{
 			return pesquisa(S, ini, meio - 1);
-		} else {
-			return pesquisa(S, meio + 1, fim);
-		}
+		} 
 	}
 
 	public static Integer questaoExtra(int[] C, int n) {
@@ -129,9 +127,11 @@ public class algoritmosProva {
 
 	public static void main(String[] args) {
 		int[] S = {-5, -2, -1, 0, 3, 5};
-		System.out.println(pesquisa(S, 0, 3));
+		System.out.println(pesquisa(S, 0, 5));
 		int[] A = {2, 3, 5, 6};
 		System.out.println(pesquisa(A, 0, 3));
+		int[] B = {-1, 1, 5, 7, 8, 10};
+		System.out.println(pesquisa(B, 0, 5));
 
 		int[] C = {0, -3, 5, 10};
 		System.out.println("Questao Extra: " + questaoExtra(C, 4));
