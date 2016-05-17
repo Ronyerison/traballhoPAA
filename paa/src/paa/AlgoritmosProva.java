@@ -3,7 +3,7 @@ package paa;
 import java.util.ArrayList;
 import java.util.List;
 
-public class algoritmosProva {
+public class AlgoritmosProva {
 
 	public static String pesquisa(int[] S, int ini, int fim) {
 		if (ini == fim) {
@@ -149,6 +149,48 @@ public class algoritmosProva {
 		int[] F = {15, 9, 57, 5, -3, 10};
 		System.out.println("Questao Extra: " + questaoExtra(F, 6));
 //		System.out.println("Questao Extra V2: " + questaoExtraV2(F));
+		
+//		//Exemplo questao 5
+//		int [][] custos = {	{0, 1, 5, 5, 5, 10},
+//							{0, 0, 5, 5, 1, 5},
+//							{0, 0, 0, 5, 5, 5},
+//							{0, 0, 0, 0, 5, 5},
+//							{0, 0, 0, 0, 0, 1},
+//							{0, 0, 0, 0, 0, 0}};
+//		questao5(custos);
+	}
+	
+	public static void questao5(int custo[][]){
+		if (custo.length == 1) {
+			System.out.println("Custo total: 0");
+			System.out.println("Caminho: 0");
+		} else {
+			int custoMinimo[] = new int[custo.length];
+			custoMinimo[0] = 0;
+			custoMinimo[1] = custo[0][1];
+			
+			int caminhoMinimo[] = new int[custo.length];
+			caminhoMinimo[0] = 0;
+			caminhoMinimo[1] = 0;
+			
+			for (int i = 2; i < custo.length; i++) {
+				custoMinimo[i] = custo[0][i];
+				caminhoMinimo[i] = 0;
+				for (int j = 1; j < i; j++) {
+					if ((custoMinimo[j] + custo[j][i]) < custoMinimo[i]) {
+						custoMinimo[i] = custoMinimo[j] + custo[j][i];
+						caminhoMinimo[i] = j;
+					}					
+				}
+			}
+			
+			System.out.print("Caminho: " + (caminhoMinimo.length-1));
+			for (int i = caminhoMinimo.length-1; i > 0; i = caminhoMinimo[i]) {
+				System.out.print(", " + caminhoMinimo[i]);
+			}
+			System.out.print("\nCusto: " + custoMinimo[custo.length-1]);
+		}
+
 	}
 
 }
